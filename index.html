@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TKK Logo Normalizer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">TKK</span>
+      <span class="brand-name">Logo Normalizer</span>
+    </div>
+    <div class="mode-switch" role="tablist">
+      <button class="mode-btn is-active" data-mode="single" role="tab">Eén logo</button>
+      <button class="mode-btn" data-mode="banner" role="tab">Banner</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="panel panel-controls">
+
+      <section class="step">
+        <h2 class="step-title"><span class="step-num">1</span>Upload</h2>
+        <label class="dropzone" id="dropzone">
+          <input type="file" id="file-input" accept="image/*" multiple hidden>
+          <div class="dropzone-inner">
+            <strong id="dropzone-title">Sleep logo hier</strong>
+            <span id="dropzone-sub">of klik om te kiezen (PNG, JPG, SVG)</span>
+          </div>
+        </label>
+        <div class="logo-toolbar" id="logo-toolbar" hidden>
+          <button class="secondary-btn" id="auto-balance-btn" title="Pas individuele scales aan zodat alle logos ongeveer dezelfde inkt-oppervlakte hebben in het rooster">Balanceer ink-area</button>
+        </div>
+        <ul class="logo-list" id="logo-list"></ul>
+      </section>
+
+      <section class="step">
+        <h2 class="step-title"><span class="step-num">2</span>Cel-stijl</h2>
+        <div class="field">
+          <label>Box-formaat
+            <select id="cell-size">
+              <option value="400">400 x 400</option>
+              <option value="800" selected>800 x 800</option>
+              <option value="1200">1200 x 1200</option>
+              <option value="custom">Custom</option>
+            </select>
+          </label>
+          <div class="field-row" id="custom-size-row" hidden>
+            <input type="number" id="cell-w" min="100" max="3000" value="800" aria-label="Breedte">
+            <span>x</span>
+            <input type="number" id="cell-h" min="100" max="3000" value="800" aria-label="Hoogte">
+          </div>
+        </div>
+        <div class="field">
+          <label>Padding <span class="value-tag" id="padding-val">10%</span></label>
+          <input type="range" id="padding" min="0" max="30" value="10">
+        </div>
+        <div class="field">
+          <label>Achtergrond</label>
+          <div class="bg-options">
+            <button class="bg-btn is-active" data-bg="transparent">Transparant</button>
+            <button class="bg-btn" data-bg="#ffffff">Wit</button>
+            <button class="bg-btn" data-bg="custom">
+              <input type="color" id="bg-custom" value="#f5f1ea">
+            </button>
+          </div>
+        </div>
+        <div class="field">
+          <label>Logo-kleur</label>
+          <div class="bg-options">
+            <button class="tint-btn" data-mode="original">Origineel</button>
+            <button class="tint-btn is-active" data-mode="grayscale">Grijs</button>
+            <button class="tint-btn" data-mode="tint">
+              <input type="color" id="tint-color" value="#1B6EF3">
+            </button>
+          </div>
+        </div>
+        <div class="field">
+          <label class="toggle-label">
+            <input type="checkbox" id="optical-center">
+            <span>Optisch centreren</span>
+            <span class="hint-inline">(in plaats van geometrisch)</span>
+          </label>
+        </div>
+      </section>
+
+      <section class="step" id="banner-step" hidden>
+        <h2 class="step-title"><span class="step-num">3</span>Rooster</h2>
+        <div class="field">
+          <label>Kolommen <span class="value-tag" id="cols-val">10</span></label>
+          <input type="range" id="cols" min="2" max="12" value="10">
+        </div>
+        <div class="field">
+          <label>Gap tussen cellen <span class="value-tag" id="gap-val">0px</span></label>
+          <input type="range" id="gap" min="0" max="80" value="0">
+        </div>
+        <div class="meta-line" id="grid-meta">Voeg logos toe om rooster te zien</div>
+      </section>
+
+      <section class="step">
+        <h2 class="step-title"><span class="step-num" id="export-num">3</span>Export</h2>
+        <button class="primary-btn" id="download-btn" disabled>Download PNG</button>
+        <div class="hint" id="export-hint">Upload eerst een logo</div>
+      </section>
+
+    </aside>
+
+    <section class="panel panel-preview">
+      <div class="preview-toolbar">
+        <span class="preview-label" id="preview-label">Preview</span>
+        <span class="preview-dim" id="preview-dim"></span>
+      </div>
+      <div class="preview-stage" id="preview-stage">
+        <div class="empty-state">
+          <span>Upload een logo om de preview te zien.</span>
+        </div>
+        <canvas id="preview-canvas" hidden></canvas>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
