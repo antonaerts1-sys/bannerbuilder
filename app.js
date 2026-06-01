@@ -1,4 +1,4 @@
-// TKK Logo Normalizer — single-file vanilla JS.
+// TKK Bannerbuilder — single-file vanilla JS.
 // Sections: state | upload | normalize | render | export | UI wiring.
 
 // ---------- STATE ----------
@@ -417,8 +417,8 @@ function exportCurrent() {
   if (!cv) return;
   const ts = new Date().toISOString().slice(0, 10);
   const name = state.mode === 'single'
-    ? `logo-normalized-${ts}.png`
-    : `logo-banner-${state.logos.length}-${ts}.png`;
+    ? `bannerbuilder-logo-${ts}.png`
+    : `bannerbuilder-banner-${state.logos.length}-${ts}.png`;
   downloadCanvas(cv, name);
 }
 

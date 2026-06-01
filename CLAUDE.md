@@ -1,6 +1,8 @@
-# TKK Logo Normalizer
+# TKK Bannerbuilder
 
-Single-page browser tool om logo's te normaliseren voor decks: grijstinten, uniforme bounding box, optioneel in een banner-rooster.
+Single-page browser tool om logo's te normaliseren voor decks: grijstinten of originele kleuren, uniforme bounding box, optioneel in een banner-rooster.
+
+Eerder bekend als "TKK Logo Normalizer" (oude folder/repo naam: `tkk-logo-normalizer`).
 
 ## Doel
 
@@ -93,7 +95,7 @@ state = {
 
 ## Deployment
 
-Op te zetten als GitHub Pages site onder Anton's `antonaerts1-sys` account in een nieuwe repo `tkk-logo-normalizer`. Zelfde flow als antonos/sporttracker. Geen build nodig, push de drie bestanden naar `main`, zet Pages aan op root.
+Gedeployed als GitHub Pages site onder Anton's `antonaerts1-sys` account in repo `bannerbuilder`. URL: https://antonaerts1-sys.github.io/bannerbuilder/. Geen build nodig, push naar `main` triggert nieuwe deploy.
 
 ## Design
 
